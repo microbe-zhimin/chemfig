@@ -1,0 +1,260 @@
+\documentclass[a4paper]{ltjsarticle}
+\usepackage{luatexja}
+\usepackage[margin=20truemm]{geometry}    % 用紙の余白
+\usepackage{setspace}                     % 行間調整
+\usepackage{titlesec}                     % セクション設定
+\usepackage{graphicx}                     % 画像
+\usepackage{color}                        % 画像
+\usepackage{pict2e}
+\usepackage{float}                        % 画像位置
+\usepackage{url}                          % URL
+\usepackage[super]{cite}                  % 参考文献引用
+\usepackage{longtable}                    % 表
+\usepackage{array}                        % 表
+\usepackage{booktabs}                     % 実験器具表
+\usepackage{tabularx}                     % 表の大きさ変更
+\usepackage{caption}                      % キャプション
+\usepackage{nccmath}                      % 数式設定
+\usepackage[version=3]{mhchem}            % 化学
+\usepackage{chemfig}                      % 化学
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\newcommand*{\cnumber}[1]{\raisebox{0.2ex}[0ex][0ex]{\textcircled{\scriptsize{#1}}}} % 丸数字
+\newcounter{num} % 数字
+\newcommand*{\Rnumber}[1]{\setcounter{num}{#1} \Roman{num}}   % ローマ数字大
+\newcommand*{\rnumber}[1]{\setcounter{num}{#1} \roman{num}}   % ローマ数字小
+\newcommand*{\RRnumber}[1]{(\setcounter{num}{#1}\Roman{num})} % (ローマ数字大)
+\newcommand*{\rrnumber}[1]{(\setcounter{num}{#1}\roman{num})} % (ローマ数字小)
+\newcolumntype{C}[1]{>{\hfil}m{#1}<{\hfil}}     % 表セル文字中央
+% \captionsetup[figure]{labelfont=normalsize}     % 図キャプションフォント
+% \captionsetup[table]{labelfont=normalsize}      % 表キャプションフォント
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\titleformat{\section}{\normalfont\normalsize}{\thesection}{5pt}{}     % セクション環境設定
+\titleformat{\subsection}{\normalfont\normalsize}{\thesection}{5pt}{}  % サブセクション環境設定
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+% \begin{document}
+    % 横向きベンゼン \benzene
+    \def\benzene{{\unitlength.1pt%
+        \raisebox{-7pt}{\begin{picture}(223,195)%
+            \linethickness{.5pt}%
+            \font\tenln=linew10%
+            \put(0,96){\line(10,17){56}}%
+            \put(54,191){\line(1,0){114}}%
+            \put(166,191){\line(10,-17){56}}%
+            \put(0,98){\line(10,-17){56}}%
+            \put(54,5){\line(1,0){114}}%
+            \put(166,5){\line(10,17){56}}%
+            \put(23,98){\line(10,17){45}}%
+            \put(155,173){\line(10,-17){45}}%
+            \put(66,22){\line(1,0){90}}%
+        \end{picture}}
+    }}
+    % 横向きフェニル基 \phenyl
+    \def\phenyl{{\unitlength.1pt%
+        \raisebox{-7pt}{\begin{picture}(301,195)%
+            \linethickness{.5pt}%
+            \font\tenln=linew10%
+            \put(0,96){\line(10,17){56}}%
+            \put(54,191){\line(1,0){114}}%
+            \put(166,191){\line(10,-17){56}}%
+            \put(0,98){\line(10,-17){56}}%
+            \put(54,5){\line(1,0){114}}%
+            \put(166,5){\line(10,17){56}}%
+            \put(23,98){\line(10,17){45}}%
+            \put(155,173){\line(10,-17){45}}%
+            \put(66,22){\line(1,0){90}}%
+            \put(220,98){\line(1,0){80}}%
+        \end{picture}}
+    }}
+\makeatletter
+    % 横向きベンゼンパラ二置換体 \para
+    \def\para{{\unitlength.1pt%
+        \raisebox{-7pt}{\begin{picture}(378,195)%
+            \linethickness{.5pt}%
+            \font\tenln=linew10%
+            \put(77,96){\line(100,173){57}}%
+            \put(132,192){\line(1,0){113}}%
+            \put(243,192){\line(100,-173){56}}%
+            \put(77,98){\line(10,-17){57}}%
+            \put(132,3){\line(1,0){113}}%
+            \put(243,3){\line(100,173){56}}%
+            \put(100,98){\line(100,173){45}}%
+            \put(232,173){\line(100,-173){45}}%
+            \put(143,22){\line(1,0){90}}%
+            \put(297,98){\line(1,0){80}}%
+            \put(0,98){\line(1,0){80}}%
+        \end{picture}}}}
+    % オルト二置換体 \ortho
+    \def\ortho#1#2{{\unitlength.1pt%
+        \raisebox{-7pt}{\begin{picture}(270,225)%
+            \linethickness{.5pt}%
+            \font\tenln=linew10%
+            \put(2,56){\line(0,1){113}}%
+            \put(2,167){\line(173,100){97}}%
+            \put(2,58){\line(173,-100){95}}%
+            \put(96,2){\line(173,100){97}}%
+            \put(192,56){\line(0,1){113}}%
+            \put(97,222){\line(173,-100){97}}%
+            \put(22,157){\line(173,100){76}}%
+            \put(22,68){\line(173,-100){76}}%
+            \put(173,69){\line(0,1){87}}%
+            \put(192,167){\line(173,100){76}}%
+            \put(192,57){\line(173,-100){76}}%
+        \end{picture}}%
+        \nobreak\kern2pt\nobreak
+        \setbox0\hbox{\raisebox{12pt}{\ce{#1}}}%
+        \setbox1\hbox{\raisebox{-9pt}{\ce{#2}}}%
+        \ifdim\wd0>\wd1\@tempdima=\wd0\else\@tempdima=\wd1\fi
+        \nobreak\makebox[0pt][l]{\usebox0}\nobreak\makebox[\@tempdima][l]{\usebox1}
+    }}
+    % メタ二置換体 \meta
+    \def\meta#1#2{{\unitlength.1pt%
+        \raisebox{-7pt}{\begin{picture}(270,310)%
+            \linethickness{.5pt}%
+            \font\tenln=linew10%
+            \put(2,56){\line(0,1){113}}%
+            \put(2,167){\line(173,100){97}}%
+            \put(2,58){\line(173,-100){95}}%
+            \put(96,2){\line(173,100){97}}%
+            \put(192,56){\line(0,1){113}}%
+            \put(97,222){\line(173,-100){97}}%
+            \put(22,157){\line(173,100){76}}%
+            \put(22,68){\line(173,-100){76}}%
+            \put(173,69){\line(0,1){87}}%
+            \put(192,57){\line(173,-100){76}}%
+            \put(97,220){\line(0,1){89}}%
+        \end{picture}}%
+        \nobreak\kern2pt\nobreak
+        \setbox0\hbox{\kern-23pt\raisebox{26pt}{\ce{#1}}}%
+        \setbox1\hbox{\raisebox{-9pt}{\ce{#2}}}%
+        \ifdim\wd0>\wd1\@tempdima=\wd0\else\@tempdima=\wd1\fi
+        \nobreak\makebox[0pt][l]{\usebox0}\nobreak\makebox[\@tempdima][l]{\usebox1}
+    }}
+\makeatother
+% \end{document}
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+% \begin{document}
+\makeatletter
+    \def\cefig#1{%
+        \begingroup
+        \setchemfig{atom sep = 1.55em}
+        \setchemfig{bond offset = 1pt}
+        \setchemfig{bond style {line width = 0.5pt}}
+        \def\CF@node@content{%
+            \expandafter\expandafter\expandafter
+            \printatom\expandafter\expandafter\expandafter
+            {\csname atom@\number\CF@cnt@atomnumber\endcsname}%
+            \ensuremath{\CF@node@strut}%
+        }%
+        \def\printatom##1{\vphantom{C}\smash{\ce{##1}}}%
+        \chemfig{#1}%
+        \endgroup
+    }
+\makeatother
+% \end{document}
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+\begin{document}
+    \setchemfig{scheme debug=true}
+
+    \scriptsize\setchemfig{bond offset=1pt,atom sep=2em,compound sep=4em,arrow coeff=1.25} 
+    % アセトアニリド
+    \schemestart
+        \chemfig{*6(-=-(-@{o4}NH2)=-=)}
+        \arrow{0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{-[:-30]@{o1}(=[@{o2}:-90]@{o3}O)-[:30]O-[:-30](=[:-90]O)-[:30]}
+        \arrow(.east--.187)
+        \chemfig{*6(=-=(-@{o5}\charge{-90:3pt=$\scriptstyle\oplus$}{N}(-[@{o6}:120]H)(-[:60]H)
+            (-[:-30]
+            (-[:30]O-[:-30](=[:-90]O)(-[:30]))
+            (-[:240])
+            (-[:300]\charge{270:2pt=$\scriptstyle\ominus$}{O})))-=-)}
+        \arrow(.-7--.180)
+        \chemfig{*6(=-=(-\chemabove{N}{H}
+            (-[:-30]
+            (-[@{o7}:30]@{o8}O-[:-30](=[:-90]O)(-[:30]))
+            (-[:240])
+            (-[@{o9}:300]@{o10}\charge{270:2pt=$\scriptstyle\ominus$}{O})))-=-)}
+    \schemestop
+    \chemmove[line width=0.2pt,-stealth,dash pattern = on 2pt off 1pt]{
+        \draw[shorten <=2pt](o2)..controls +(10:5mm) and +(10:5mm)..(o3.east);
+        \draw[shorten >=2pt](o4.45).. controls +(60:10mm) and +(90:10mm).. (o1);
+        \draw[shorten <=2pt](o6.90) ..controls +(210:5mm) and +(210:5mm)..(o5);
+        \draw[shorten <=2pt](o7)..controls+(120:5mm)and+(120:5mm)..(o8);
+        \draw[shorten <=2pt](o10)..controls+(30:5mm)and+(30:5mm)..(o9);
+    }
+    \linebreak
+    \schemestart
+        \arrow
+        \chemfig{*6(=-=(-\chemabove{N}{H}(-[:-30](-[:30])(=[:270]O)))-=-)}
+        \arrow{0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{[:60]**[-70,30,dash pattern=on 2pt off 2pt]6(O-(-)-O)}
+    \schemestop
+    \linebreak
+    \schemestart
+        \chemfig{*6(=-=(-@{o1}\chemabove{N}{H}(-[@{o2}:-30](-[:30])(=[@{o3}:270]@{o4}O)))-=-)}
+        \arrow{<->}
+        \chemfig{*6(=-=(-\chemabove{\charge{135:2pt=$\scriptstyle\oplus$}{N}}{H}(=[:-30](-[:30])(-[:270]\charge{270:2pt=$\scriptstyle\ominus$}{O})))-=-)}
+    \schemestop
+    \chemmove[line width=0.2pt,-stealth,dash pattern = on 2pt off 1pt]{
+        \draw[shorten <=2pt](o1)..controls +(60:3mm) and +(60:5mm)..(o2);
+        \draw[shorten <=2pt](o3).. controls +(10:5mm) and +(10:5mm).. (o4);
+    }
+    \linebreak
+    \linebreak
+    \linebreak
+    % ブロモアニリン
+    \schemestart
+        \chemfig{@{o5}Br-[@{o6}]@{o7}Br}
+        \arrow{0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{*6(=[@{o8}]-[@{o9}]=[@{o10}](-[@{o11}]@{o12}\chemabove{N}{H}(-[:-30](-[:30])(=[:270]O)))-=-)}
+        \arrow
+        \chemfig{*6((-[@{o13}:195]H)(-[:225]Br)--=(=[@{o14}]@{o15}\chemabove{\charge{45:2pt=$\scriptstyle\oplus$}{N}}{H}(-[:-30](-[:30])(=[:270]O)))-[@{o16}]=[@{o17}]-[@{o18}])}
+        \arrow
+        \chemfig{*6((-Br)=-=(-\chemabove{N}{H}(-[:-30](-[:30])(=[:270]O)))-=-)}
+        \arrow
+        \chemfig{*6((-Br)=-=(-NH_2)-=-)}
+    \schemestop
+        \chemmove[line width=0.2pt,-stealth,dash pattern = on 2pt off 1pt]{
+        \draw[shorten <=2pt](o12)..controls +(120:3mm) and +(120:5mm)..(o11);
+        \draw[shorten <=2pt](o10).. controls +(180:3mm) and +(120:3mm).. (o9);
+        \draw[shorten <=2pt](o8).. controls +(240:8mm) and +(270:8mm).. (o7);
+        \draw[shorten <=2pt](o6).. controls +(90:4mm) and +(90:4mm).. (o5);
+        \draw[shorten <=2pt](o13).. controls +(105:2mm) and +(180:2mm).. (o18);
+        \draw[shorten <=2pt](o17).. controls +(300:3mm) and +(240:3mm).. (o16);
+        \draw[shorten <=2pt](o14)..controls +(120:3mm) and +(120:5mm)..(o15);
+    }
+    \linebreak
+    \linebreak
+    \linebreak
+    % ブロモアニリン
+    \schemestart
+        \chemfig{*6(=-=[@{o1}](-[@{o2}]@{o3}NH_2)-=-)}
+        \arrow{0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{@{o4}Br-[@{o5}]@{o6}Br}
+        \arrow{->}
+        \chemfig{*6(=-(-[@{o7}:345]@{o8}H)(-[:315]Br)-[@{o9}](=[@{o10}]@{o11}\charge{45:2pt=$\scriptstyle\oplus$}{N}H_2)-=-)}
+        \arrow{0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{@{o12}\charge{45:2pt=$\scriptstyle\ominus$}{Br}}
+        \arrow{->}
+        \chemfig{*6(=-(-Br)=(-NH_2)-=-)}
+    \schemestop
+    \chemmove[line width=0.2pt,-stealth,dash pattern = on 2pt off 1pt]{
+        \draw[shorten <=2pt](o3)..controls +(120:3mm) and +(120:5mm)..(o2);
+        \draw[shorten <=2pt](o1)..controls +(300:8mm) and +(240:8mm)..(o4);
+        \draw[shorten <=2pt](o5).. controls +(90:4mm) and +(90:4mm).. (o6);
+        \draw[shorten <=2pt](o12).. controls +(240:5mm) and +(-60:8mm).. (o8);
+        \draw[shorten <=2pt](o7).. controls +(75:2mm) and +(0:2mm).. (o9);
+        \draw[shorten <=2pt](o10)..controls +(120:3mm) and +(120:5mm)..(o11);
+    }
+
+
+\end{document}
