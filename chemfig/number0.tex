@@ -1,0 +1,117 @@
+\documentclass[a4paper]{ltjsarticle}
+\usepackage{luatexja}
+\usepackage[margin=20truemm]{geometry}    % 用紙の余白
+\usepackage{setspace}                     % 行間調整
+\usepackage{titlesec}                     % セクション設定
+\usepackage{graphicx}                     % 画像
+\usepackage{color}                        % 画像
+\usepackage{pict2e}
+\usepackage{float}                        % 画像位置
+\usepackage{url}                          % URL
+\usepackage[super]{cite}                  % 参考文献引用
+\usepackage{longtable}                    % 表
+\usepackage{array}                        % 表
+\usepackage{booktabs}                     % 実験器具表
+\usepackage{tabularx}                     % 表の大きさ変更
+\usepackage{caption}                      % キャプション
+\usepackage{nccmath}                      % 数式設定
+\usepackage[version=3]{mhchem}            % 化学
+\usepackage{chemfig}                      % 化学
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\newcommand*{\cnumber}[1]{\raisebox{0.2ex}[0ex][0ex]{\textcircled{\scriptsize{#1}}}} % 丸数字
+\newcounter{num} % 数字
+\newcommand*{\Rnumber}[1]{\setcounter{num}{#1} \Roman{num}}   % ローマ数字大
+\newcommand*{\rnumber}[1]{\setcounter{num}{#1} \roman{num}}   % ローマ数字小
+\newcommand*{\RRnumber}[1]{(\setcounter{num}{#1}\Roman{num})} % (ローマ数字大)
+\newcommand*{\rrnumber}[1]{(\setcounter{num}{#1}\roman{num})} % (ローマ数字小)
+\newcolumntype{C}[1]{>{\hfil}m{#1}<{\hfil}}     % 表セル文字中央
+% \captionsetup[figure]{labelfont=normalsize}     % 図キャプションフォント
+% \captionsetup[table]{labelfont=normalsize}      % 表キャプションフォント
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\titleformat{\section}{\normalfont\normalsize}{\thesection}{5pt}{}     % セクション環境設定
+\titleformat{\subsection}{\normalfont\normalsize}{\thesection}{5pt}{}  % サブセクション環境設定
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{document}
+    % \setchemfig{scheme debug=true}
+
+    \scriptsize
+    \setchemfig{bond offset=1pt,atom sep=2em,compound sep=4em,arrow coeff=1.25} 
+    \noindent
+    % EDTA
+    \schemestart
+        \chemfig{
+            N(-[:150]-[:90](=[:30]O)(-[:150]OH))(-[:270]-[:210](-[:150]OH)(=[:270]O))
+            -[:30]-[:-30]-[:30]
+            N(-[:-30]-[:270](-[:-30]OH)(=[:-150]O))(-[:90]-[:30](-[:-30]OH)(=[:90]O))
+        }
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    % EDTA
+    \setchemfig{bond offset=1pt,atom sep=2.5em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=1pt,cram dash sep=1pt,bond join} 
+    \schemestart
+        \chemfig{
+            Pb?[1]
+            (-[:160,1.5,,,dash pattern=on 2pt off 2pt]N?[2]
+                (<:[:30]-[:0,1.3,,,dash pattern=on 1pt off 1pt,line width=2pt](=[:40,0.8]O)>:[:-35]O?[1,,{dash pattern=on 2pt off 2pt}])
+                (-[:105]-[:33](=[:97,0.8]O)-[:-35]O?[1,,{dash pattern=on 2pt off 2pt}])
+                )
+            (-[:-20,1.5,,,dash pattern=on 2pt off 2pt]O<[:-150]
+                (=[:-50,0.8]O)-[:180,1.3,,,line width=2pt]>[:145]N?[1,,{dash pattern=on 2pt off 2pt}]
+                (-[:160,,,,,line width=2pt]>[:80,0.5]?[2])
+                (-[:-100]-[:-30](=[:-100,0.8]O)-[:25]O?[1,,{dash pattern=on 2pt off 2pt}])
+                )
+        }
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    % EDTA
+    % 重なり排除
+    \setchemfig{bond offset=1pt,atom sep=2.5em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=1pt,cram dash sep=1pt,bond join} 
+    \schemestart
+        \chemfig{
+            Bi?[1]
+            (-[:160,1.5,,,dash pattern=on 2pt off 2pt]N?[2]
+                (<:[:30]-[:0,1.3,,,dash pattern=on 1pt off 1pt,line width=2pt](=[:40,0.8]O)>:[:-35]O?[1,,{dash pattern=on 2pt off 2pt}])
+                (-[:105]-[:33](=[:97,0.8]O)-[:-35]O?[1,1,white,{line width=2pt}]?[1,,{dash pattern=on 2pt off 2pt}])
+                )
+            (-[:-20,1.5,,,dash pattern=on 2pt off 2pt]O<[:-150]
+                (=[:-50,0.8]O)-[:180,1.3,,,line width=2pt]>[:145]N?[1,,{dash pattern=on 2pt off 2pt}]
+                (-[:160,,,,,line width=2pt]>[:80,0.5]?[2])
+                (-[:-100]-[:-30](=[:-100,0.8]O)-[:25]O?[1,,{dash pattern=on 2pt off 2pt}])
+                )
+            (-[:-20,1.5,,,dash pattern=on 2pt off 2pt]O<[:-150](-[:180,1.3,,,white,line width=3pt]\phantom{D})(=[:-50,0.8]O)-[:180,1.3,,,line width=2pt])
+        }
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    % ヘキサミン
+    \setchemfig{bond offset=1pt,atom sep=2.5em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=1pt,cram dash sep=1pt,bond join} 
+    \schemestart
+        \definesubmol{c1}{-[:60]N(-[:90]-[:10]N?[1]?[2])-[:350]} 
+        \definesubmol{c2}{-[:10]N(-[:90]?[1])<[:240]-[:170,,,,line width=2pt](-[:90]?[2])>[:190]}
+        \chemfig{(!{c2}N!{c1})}
+        %
+        \chemfig{N?[1](-[:90]-[:10]N?[2]?)-[:350]-[:10]N(-[:90]?[2])
+            <[:240]-[:170,,,,line width=2pt](-[:90,,,,white,line width=3pt]\phantom{1})(-[:350,,,,line width=2pt])(-[:90]?[2])>[:190]N?[1]
+        }
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    % XO試薬
+    \setchemfig{bond offset=1pt,atom sep=2.5em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=1pt,cram dash sep=1pt,bond join} 
+    \schemestart
+        \chemfig{[:0]*5(
+            ([:180]-*6(=-(-)=(-HO)-
+                (--[:180]N(-[:120]-[:180](-[:120]HO)(=[:240]O))(-[:240]-[:300](-[:0]OH)(=[:240]O)))
+                =-))
+            ([:252]-*6(=-(-)=(-HO)-
+                (--[:12]N(-[:72]-[:12](=[:72]O)(-[:-48]OH))(-[:-48]-[:-108](=[:-48]O)(-[:-168])HO))
+                =-))
+            -*6(-=-=-=)--S(=[:102]O)(=[:42]O)-O-)}
+    \schemestop
+\end{document}
