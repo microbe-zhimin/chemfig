@@ -1,0 +1,46 @@
+\documentclass[a4paper]{ltjsarticle}
+\usepackage{luatexja}
+\usepackage[margin=20truemm]{geometry}    % 用紙の余白
+\usepackage{setspace}                     % 行間調整
+\usepackage{titlesec}                     % セクション設定
+\usepackage{graphicx}                     % 画像
+\usepackage{color}                        % 画像
+\usepackage{pict2e}
+\usepackage{float}                        % 画像位置
+\usepackage{url}                          % URL
+\usepackage[super]{cite}                  % 参考文献引用
+\usepackage{longtable}                    % 表
+\usepackage{array}                        % 表
+\usepackage{booktabs}                     % 実験器具表
+\usepackage{tabularx}                     % 表の大きさ変更
+\usepackage{caption}                      % キャプション
+\usepackage{nccmath}                      % 数式設定
+\usepackage[version=3]{mhchem}            % 化学
+\usepackage{chemfig}                      % 化学
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\newcommand*{\cnumber}[1]{\raisebox{0.2ex}[0ex][0ex]{\textcircled{\scriptsize{#1}}}} % 丸数字
+\newcounter{num} % 数字
+\newcommand*{\Rnumber}[1]{\setcounter{num}{#1} \Roman{num}}   % ローマ数字大
+\newcommand*{\rnumber}[1]{\setcounter{num}{#1} \roman{num}}   % ローマ数字小
+\newcommand*{\RRnumber}[1]{(\setcounter{num}{#1}\Roman{num})} % (ローマ数字大)
+\newcommand*{\rrnumber}[1]{(\setcounter{num}{#1}\roman{num})} % (ローマ数字小)
+\newcolumntype{C}[1]{>{\hfil}m{#1}<{\hfil}}     % 表セル文字中央
+% \captionsetup[figure]{labelfont=normalsize}     % 図キャプションフォント
+% \captionsetup[table]{labelfont=normalsize}      % 表キャプションフォント
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\titleformat{\section}{\normalfont\normalsize}{\thesection}{5pt}{}     % セクション環境設定
+\titleformat{\subsection}{\normalfont\normalsize}{\thesection}{5pt}{}  % サブセクション環境設定
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{document}
+    % \setchemfig{scheme debug=true}
+    % シクロヘキサン
+    \setchemfig{bond offset=1pt,atom sep=2.5em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=1pt,cram dash sep=1pt,bond join} 
+    \schemestart
+        \definesubmol{c1}{-[:120](-[:350,0.7]OH)-[:190](-[:155,0.65])} 
+        \definesubmol{c2}{-[:170](-[:200,0.7]HO)<[:300](-[:170,0.6]HO)-[:10,,,,line width=2pt](-[:-40,0.6]OH)>[:-10]}
+        \definesubmol{c3}{-[:60](-[:190,0.7]HO)-[:350](-[:25,0.65])} 
+        \definesubmol{c4}{-[:10](-[:340,0.7]OH)<[:240](-[:10,0.6]OH)-[:170,,,,line width=2pt](-[:220,0.6]HO)>[:190]}
+        \chemfig{(!{c1}(!{c2}))}
+        \chemfig{(!{c3}(!{c4}))}
+    \schemestop
+\end{document}
