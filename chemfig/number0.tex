@@ -1,0 +1,324 @@
+\documentclass[a4paper]{ltjsarticle}
+\usepackage{luatexja}
+\usepackage[margin=20truemm]{geometry}    % 用紙の余白
+\usepackage{setspace}                     % 行間調整
+\usepackage{titlesec}                     % セクション設定
+\usepackage{graphicx}                     % 画像
+\usepackage{color}                        % 画像
+\usepackage{pict2e}
+\usepackage{float}                        % 画像位置
+\usepackage{url}                          % URL
+\usepackage[super]{cite}                  % 参考文献引用
+\usepackage{longtable}                    % 表
+\usepackage{array}                        % 表
+\usepackage{booktabs}                     % 実験器具表
+\usepackage{tabularx}                     % 表の大きさ変更
+\usepackage{caption}                      % キャプション
+\usepackage{nccmath}                      % 数式設定
+\usepackage[version=3]{mhchem}            % 化学
+\usepackage{chemfig}                      % 化学
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\newcommand*{\cnumber}[1]{\raisebox{0.2ex}[0ex][0ex]{\textcircled{\scriptsize{#1}}}} % 丸数字
+\newcounter{num} % 数字
+\newcommand*{\Rnumber}[1]{\setcounter{num}{#1} \Roman{num}}   % ローマ数字大
+\newcommand*{\rnumber}[1]{\setcounter{num}{#1} \roman{num}}   % ローマ数字小
+\newcommand*{\RRnumber}[1]{(\setcounter{num}{#1}\Roman{num})} % (ローマ数字大)
+\newcommand*{\rrnumber}[1]{(\setcounter{num}{#1}\roman{num})} % (ローマ数字小)
+\newcolumntype{C}[1]{>{\hfil}m{#1}<{\hfil}}     % 表セル文字中央
+% \captionsetup[figure]{labelfont=normalsize}     % 図キャプションフォント
+% \captionsetup[table]{labelfont=normalsize}      % 表キャプションフォント
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\titleformat{\section}{\normalfont\normalsize}{\thesection}{5pt}{}     % セクション環境設定
+\titleformat{\subsection}{\normalfont\normalsize}{\thesection}{5pt}{}  % サブセクション環境設定
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{document}
+    % \setchemfig{scheme debug=true}
+    % CarbonatobisCobalt(III)Chloride
+    % \noindent
+    % 66
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{Cl-[:30](=[:90]O)-[:-30]-[:30]-[:-30]-[:30]-[:-30](=[:-90]O)-[:30]Cl} 
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{H_2N-[:-30]-[:30]-[:-30]-[:30]-[:-30]-[:30]-[:-30]NH_2} 
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{-[@{op,0.2}:30]\chemabove{N}{H}-[@{op2,0.3}:-30]-[@{cl2,0.7}:30]\chemabove{N}{H}
+                -[:-30](=[:-90]O)-[@{op3,0.5}:30]-[@{cl3,0.5}:-30](=[:-90]O)-[@{cl,0.8}:30]} 
+        \polymerdelim[delimiters = {[]}, height = 25pt, depth = 25pt, indice = n ]{op}{cl}
+        \polymerdelim[delimiters = (), height = 2pt, indice = 6]{op2}{cl2}
+        \polymerdelim[delimiters = (), height = 2pt, indice = 4]{op3}{cl3}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    % 610
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{Cl-[:30](=[:90]O)-[:-30]-[:30]-[:-30]-[:30]-[:-30]-[:30]-[:-30]-[:30]-[:-30](=[:-90]O)-[:30]Cl} 
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{H_2N-[:-30]-[:30]-[:-30]-[:30]-[:-30]-[:30]-[:-30]NH_2} 
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{-[@{op,0.2}:30]\chemabove{N}{H}-[@{op2,0.3}:-30]-[@{cl2,0.7}:30]\chemabove{N}{H}
+                -[:-30](=[:-90]O)-[@{op3,0.5}:30]-[@{cl3,0.5}:-30](=[:-90]O)-[@{cl,0.8}:30]} 
+        \polymerdelim[delimiters = {[]}, height = 25pt, depth = 25pt, indice = n ]{op}{cl}
+        \polymerdelim[delimiters = (), height = 2pt, indice = 6]{op2}{cl2}
+        \polymerdelim[delimiters = (), height = 2pt, indice = 8]{op3}{cl3}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    % ポリエチレンテレフタラート
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{*6((-(=[:-90]O)-[:150]HO)-=-(-(=[:90]O)-[:-30]OH)=-=)}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{HO-[:30]-[:-30]-[:30]OH}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{*6((-(=[:-90]O)-[:150]O-[@{op,0.5}:210])-=-(-(=[:90]O)-[:-30]O-[:30]-[:-30]-[@{cl,0.5}:30])=-=)}
+        \polymerdelim[delimiters = {[]}, height = 60pt, depth = 35pt, indice = n]{op}{cl}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    % ポリエチレン
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{H_2C=CH_2}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{-[@{op,0.3}:30]-[:-30]-[@{cl,0.7}:30]}
+        \polymerdelim[delimiters = {[]}, height = 15pt, depth = 15pt, indice = n]{op}{cl}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    % ポリプロピレン
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{=[:30]-[:-30]}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{-[@{op,0.3}:30]-[:-30](-[:-90])-[@{cl,0.7}:30]}
+        \polymerdelim[delimiters = {[]}, height = 5pt, depth = 25pt, indice = n]{op}{cl}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    % ポリ酢酸ビニル
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{=[:30]-[:-30]O-[:30](=[:90]O)-[:-30]}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{-[@{op,0.3}:30](-[:90]O-[:30](=[:90]O)-[:-30])-[:-30]-[@{cl,0.7}:30]}
+        \polymerdelim[delimiters = {[]}, height = 20pt, depth = 10pt, indice = n]{op}{cl}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    % ポリ塩化ビニル
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{=[:30]-[:-30]Cl}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{-[@{op,0.3}:30]-[:-30](-[:-90]Cl)-[@{cl,0.7}:30]}
+        \polymerdelim[delimiters = {[]}, height = 5pt, depth = 25pt, indice = n]{op}{cl}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    % ポリアクリロニトリル
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{=[:30]-[:-30]~[:-30]N}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{-[@{op,0.3}:-30]-[:30](-[:90]~[:90]N)-[@{cl,0.7}:-30]}
+        \polymerdelim[delimiters = {[]}, height = 15pt, depth = 15pt, indice = n]{op}{cl}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    % p-ジメチルアミノベンズアルデヒド
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{*6(-=-(-NH_2)=-=)}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{*6((-[:210]=[:210]O)-=-(-N(-[:90])(-[:-30]))=-=)}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{[:-30]*6((-N(-[:120])(-[:-120]))-=-(-=N-*6(-=-=-=))=-=)}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    % $\varepsilon$-カプロラクタム
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{*6(---(=O)---)}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{H_2N-OH}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{*6(---(=N-[:-30]OH)---)}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{*7(---NH-(=O)---)}
+    \schemestop
+    \linebreak
+    \linebreak
+    \linebreak
+    % ナイロン6反応機構1
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{*6(---[@{a1}](=O)---)}
+        \arrow{0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{H_2@{b1}N-OH}
+        \arrow(.east--.187)
+        \chemfig{*6(---(-[:70]@{c1}\charge{90:2pt=$\scriptstyle\ominus$}{O})(-[:-10]@{c2}\charge{270:2pt=$\scriptstyle\oplus$}{N}(-[:0]H)(-[:-45]OH)-[@{c3}:60]@{o4}H)---)}
+        \arrow(.-8--.187)
+        \chemfig{*6(---(-[@{d1}:70]@{d2}O)(-[@{d3}:-10]@{d4}\chembelow{N}{H}(-[:60]OH))---)}
+    \schemestop
+    \chemmove[line width=0.2pt,-stealth,dash pattern = on 2pt off 1pt]{
+        \draw[shorten <=2pt](b1)..controls+(120:10mm)and+(60:10mm)..(a1);
+        \draw[shorten <=2pt](c3)..controls+(120:5mm)and+(120:5mm)..(c2);
+        \draw[shorten <=2pt](c1)..controls+(60:5mm)and+(90:8mm)..(o4);
+        \draw[shorten <=2pt](d1)..controls+(150:5mm)and+(150:5mm)..(d2);
+        \draw[shorten <=2pt](d4)..controls+(90:3mm)and+(80:3mm)..(d3);
+    }
+    \linebreak
+    \linebreak
+    \linebreak
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \arrow(.east--.187){->[\chemfig{@{e1}OH^\ominus}]}
+        \chemfig{*6(---(=@{f1}N(-[@{f2}:90]@{f3}H)(-[:-30]OH))---)}
+        \arrow(.-8--.187)
+        \chemfig{*6(---(=N-[:-30]OH)---)}
+    \schemestop
+    \chemmove[line width=0.2pt,-stealth,dash pattern = on 2pt off 1pt]{
+        \draw[shorten <=2pt](e1)..controls+(90:15mm)and+(120:10mm)..(f3);
+        \draw[shorten <=2pt](f2)..controls+(30:5mm)and+(30:5mm)..(f1);
+    }
+    \linebreak
+    \linebreak
+    \linebreak
+    % ナイロン6反応機構2
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{*6(---(=[@{a1}]@{a2}N-[@{a3}:-30]@{a4}OH)---)}
+        \arrow(.east--.180){->[\chemfig{@{b1}H^\oplus}]}
+        \chemfig{*7(---N=(-[1,0.2,,,draw=none]@{c1}\scriptstyle\oplus)---)}
+        \arrow(.east--.204){->[\chemfig{@{d1}OH_2}]}
+        \chemfig{*7(---N=(-@{e1}\charge{51.4:2pt=$\scriptstyle\oplus$}{O}(-[:111.4]H)(-[@{e2}:-11.4]H))---)}
+    \schemestop
+    \chemmove[line width=0.2pt,-stealth,dash pattern = on 2pt off 1pt]{
+        \draw[shorten <=2pt](a1)..controls+(120:5mm)and+(120:5mm)..(a2);
+        \draw[shorten <=2pt](a3)..controls+(240:5mm)and+(240:5mm)..(a4);
+        \draw[shorten <=2pt](a4)..controls+(90:10mm)and+(90:10mm)..(b1);
+        \draw[shorten <=2pt](d1)..controls+(90:8mm)and+(30:8mm)..(c1);
+        \draw[shorten <=2pt](e2)..controls+(270:5mm)and+(270:5mm)..(e1);
+    }
+    \linebreak
+    \linebreak
+    \linebreak
+    \schemestart
+        \arrow(.east--.190)
+        \chemfig{*7(---N=[@{f1}](-[@{f2}]O(-[@{f3}:-11.4]@{f4}H))---)}
+        \arrow(.-8--.190)
+        \chemfig{*7(---NH-(=O)---)}
+    \schemestop
+    \chemmove[line width=0.2pt,-stealth,dash pattern = on 2pt off 1pt]{
+        \draw[shorten <=2pt](f1)..controls+(320:8mm)and+(270:8mm)..(f4);
+        \draw[shorten <=2pt](f3)..controls+(270:5mm)and+(320:5mm)..(f2);
+    }
+    \linebreak
+    \linebreak
+    \linebreak
+    % ナイロン6
+    \setchemfig{bond offset=1pt,atom sep=2.00em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=2pt,cram dash sep=2pt,bond join} 
+    \schemestart
+        \chemfig{*7(---NH-(=O)---)}
+        \+
+        \chemfig{H_2O}
+        \arrow
+        \chemfig{-[@{op,0.2}:30]\chemabove{N}{H}-[@{op2,0.3}:-30]-[@{cl2,0.7}:30](=[:90]O)-[@{cl,0.8}:-30]} 
+        \polymerdelim[delimiters = {[]}, height = 25pt, depth = 25pt, indice = n ]{op}{cl}
+        \polymerdelim[delimiters = (), height = 2pt, indice = 5]{op2}{cl2}
+    \schemestop
+\end{document}
