@@ -1,0 +1,321 @@
+\documentclass[a4paper]{ltjsarticle}
+\usepackage{luatexja}
+\usepackage[margin=20truemm]{geometry}    % 用紙の余白
+\usepackage{setspace}                     % 行間調整
+\usepackage{titlesec}                     % セクション設定
+\usepackage{graphicx}                     % 画像
+\usepackage{color}                        % 画像
+\usepackage{pict2e}
+\usepackage{float}                        % 画像位置
+\usepackage{url}                          % URL
+\usepackage[super]{cite}                  % 参考文献引用
+\usepackage{longtable}                    % 表
+\usepackage{array}                        % 表
+\usepackage{booktabs}                     % 実験器具表
+\usepackage{tabularx}                     % 表の大きさ変更
+\usepackage{caption}                      % キャプション
+\usepackage{nccmath}                      % 数式設定
+\usepackage[version=3]{mhchem}            % 化学
+\usepackage{chemfig}                      % 化学
+\usetikzlibrary{calc}
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\newcommand*{\cnumber}[1]{\raisebox{0.2ex}[0ex][0ex]{\textcircled{\scriptsize{#1}}}} % 丸数字
+\newcounter{num} % 数字
+\newcommand*{\Rnumber}[1]{\setcounter{num}{#1} \Roman{num}}   % ローマ数字大
+\newcommand*{\rnumber}[1]{\setcounter{num}{#1} \roman{num}}   % ローマ数字小
+\newcommand*{\RRnumber}[1]{(\setcounter{num}{#1}\Roman{num})} % (ローマ数字大)
+\newcommand*{\rrnumber}[1]{(\setcounter{num}{#1}\roman{num})} % (ローマ数字小)
+\newcolumntype{C}[1]{>{\hfil}m{#1}<{\hfil}}     % 表セル文字中央
+% \captionsetup[figure]{labelfont=normalsize}     % 図キャプションフォント
+% \captionsetup[table]{labelfont=normalsize}      % 表キャプションフォント
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\titleformat{\section}{\normalfont\normalsize}{\thesection}{5pt}{}     % セクション環境設定
+\titleformat{\subsection}{\normalfont\normalsize}{\thesection}{5pt}{}  % サブセクション環境設定
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{document}
+    \setchemfig{scheme debug=true}
+    \scriptsize\setchemfig{bond offset=1pt,atom sep=2.5em,compound sep=4em,arrow coeff=1.25} 
+    % シクロペンタノール
+    \schemestart
+        \hreac[hreac debug]
+        \chemfig{[:18]*5(---(-[,0.7]OH)--)}
+        \endhreac
+    \schemestop
+    \medbreak
+    % TEMPO
+    \schemestart
+        \hreac[hreac debug]
+        \chemfig{*6(---(-[:50])(-[:10])-N(-[:90,0.7]\charge{25=\.}{O})-(-[:130])(-[:170])-)}
+        \endhreac
+    \schemestop
+    \medbreak
+    % TEMPO
+    \setchemfig{bond offset=1pt,atom sep=2.5em,compound sep=4em,arrow coeff=1.25,cram width=2pt, cram dash width=1pt,cram dash sep=1pt,bond join} 
+    \schemestart
+        \hreac[hreac debug]
+        \definesubmol{c3}{-[:60]-[:350](-[:25,0.65])(-[:270,0.5])} 
+        \definesubmol{c4}{-[:10]N(-[:340,0.7]\charge{40=\.}{O})()<[:240](-[:10,0.7])(-[:270,0.6])-[:170,,,,line width=2pt]>[:190]}
+        \chemfig{(!{c3}(!{c4}))}
+        \endhreac
+    \schemestop
+    \medbreak
+    % TEMPO酸化
+    \scriptsize\setchemfig{bond offset=1pt,atom sep=2.5em,compound sep=4em,arrow coeff=1.25} 
+    \schemestart
+        \chemfig{*6(---(-[:50])(-[:10])-N(-[:90,0.7]@{a1}\charge{25=\.}{O})-(-[:130])(-[:170])-)}
+        \arrow(.350--.west){0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{@{a2}Cl-[@{a3}]@{a4}\charge{270:2pt=$\scriptstyle\ominus$}{O}}
+        \arrow(.east--.199)
+        \chemfig{*6(---(-[:50])(-[:10])-@{b1}\charge{-90=\:}{N}(-[@{b2}:90,0.7]O-[@{b3}:60,0.7]@{b4}Cl)-(-[:130])(-[:170])-)}
+        \arrow(.341--.190)
+        \chemfig{*6(---(-[:50])(-[:10])-\charge{270:2pt=$\scriptstyle\oplus$}{N}(=[:90,0.7]O)-(-[:130])(-[:170])-)}
+    \schemestop
+    \chemmove[line width=0.2pt]{
+        \draw[arrows={[left]},shorten <=2pt](a3)..controls +(80:4mm) and +(110:4mm)..(a4.90);
+        \draw[arrows={[left]},shorten <=3pt](a1.30)..controls +(45:5mm) and +(90:13mm)..($(a1)!0.45!(a3)$);
+        \draw[arrows={[left]},shorten <=3pt](a3.-90)..controls +(-90:8mm) and +(-90:8mm)..($(a1)!0.55!(a3)$);
+        \draw[shorten <=2pt](b1)..controls +(-170:5mm) and +(-170:5mm)..(b2.west);
+        \draw[shorten <=2pt](b3.-30)..controls +(-10:5mm) and +(-10:5mm)..(b4.0);
+    }
+    \medbreak
+    \medbreak
+    \medbreak
+    \schemestart
+        \chemfig{*6(---(-[:50])(-[:10])-@{d1}\charge{270:2pt=$\scriptstyle\oplus$}{N}(=[@{d2}:90,0.7]@{d3}O)-(-[:130])(-[:170])-)}
+        \arrow(.350--.west){0}[0,0.1]
+        \+
+        \arrow(.east--.200){0}[0,0.1]
+        \chemfig{[:18]*5(---(-[,0.7]@{d4}\charge{40:2pt=$\scriptstyle\ominus$}{O})--)}
+        \arrow(.340--.185)
+        \chemfig{[:-60]*6(---(-[:-50])(-[:-10])-@{e1}\charge{210:2pt=$\scriptstyle\oplus$}{N}(-[:50]@{e2}O)(-[@{e3}:10]O-[@{e4}:-10]([:-30]*5(-----))(-[@{e5}:130]@{e6}H))-(-[:110])(-[:70])-)}
+        \arrow(.355--.190)
+        \chemfig{*6(---(-[:50])(-[:10])-N(-[:90,0.7]OH)-(-[:130])(-[:170])-)}
+        \arrow(.350--.west){0}[0,0.1]
+        \+
+        \arrow(.east--.200){0}[0,0.1]
+        \chemfig{[:18]*5(---(=[,0.7]O)--)}
+    \schemestop
+    \chemmove[line width=0.2pt,-stealth]{
+        \draw[shorten <=2pt](d4.90)..controls +(120:20mm) and +(-90:20mm)..(d1.-90);
+        \draw[shorten <=2pt](d2)..controls +(-170:5mm) and +(-170:5mm)..(d3.west);
+        \draw[shorten <=2pt](e3)..controls +(-80:4mm) and +(-70:4mm)..(e1.-90);
+        \draw[shorten <=2pt](e2.90)..controls +(80:4mm) and +(100:4mm)..(e6.90);
+        \draw[shorten <=2pt](e5.180)..controls +(150:3mm) and +(120:1mm)..(e4.90);
+    }
+    \medbreak
+    \medbreak
+    \medbreak
+    \schemestart
+        \chemfig{[:18]*5(---(-[,0.7]@{f1}O-[@{f2}:30]@{f3}H)--)}
+        \arrow(.324--.west){0}[0,0.1]
+        \+
+        \arrow(.east--.west){0}[0,0.1]
+        \chemfig{@{f4}\charge{40:2pt=$\scriptstyle\ominus$}{O}H}
+        \arrow(.east--.207)
+        \chemfig{[:18]*5(---(-[,0.7]\charge{40:2pt=$\scriptstyle\ominus$}{O})--)}
+    \schemestop
+    \chemmove[line width=0.2pt,-stealth]{
+        \draw[shorten <=2pt](f4.90)..controls +(80:7mm) and +(-20:7mm)..(f3.0);
+        \draw[shorten <=2pt](f2.-90)..controls +(-30:4mm) and +(-30:4mm)..(f1.0);
+    }
+    % TEMPO酸化触媒サイクル  
+    \setchemfig{atom sep=2.5em, arrow coeff=1.25, cram width=.8ex}
+    % molecules
+    \definesubmol{A}{*6(---(-[:50])(-[:10])-N(-[:90,0.7]\charge{25=\.}{O})-(-[:130])(-[:170])-)}
+    \definesubmol{B}{*6(---(-[:50])(-[:10])-\charge{270:2pt=$\scriptstyle\oplus$}{N}(=[:90,0.7]O)-(-[:130])(-[:170])-)}
+    \definesubmol{C}{[:-60]*6(---(-[:-50])(-[:-10])-@{e1}\charge{210:2pt=$\scriptstyle\oplus$}{N}(-[:50]@{e2}O)(-[@{e3}:10]O-[@{e4}:-10]([:-30]*5(-----))(-[@{e5}:130]@{e6}H))-(-[:110])(-[:70])-)}
+    \definesubmol{D}{*6(---(-[:50])(-[:10])-N(-[:90,0.7]OH)-(-[:130])(-[:170])-)}
+    \definesubmol{E}{NaOCl}
+    \definesubmol{F}{[:18]*5(---(-[,0.7]OH)--)}
+    \definesubmol{G}{[:18]*5(---(=[,0.7]O)--)}
+
+    \def\radius{75pt}
+    \def\rradius{100pt}
+    \begin{tikzpicture}[>=CF]	% 矢尻に CF を使う
+    % メインのサイクル
+    \path (90:\radius) arc[start angle=90, end angle=-270, radius=\radius]
+    node[pos=.083] (C) {\chemfig{!C}}
+    node[pos=.75 ] (B) {\chemfig{!B}}
+    node[pos=.417] (D) {\chemfig{!D}};
+    %
+    % 反応機構
+    \chemmove[line width=0.2pt,-stealth]{
+        \draw[shorten <=2pt](e3)..controls +(-80:4mm) and +(-70:4mm)..(e1.-90);
+        \draw[shorten <=2pt](e2.90)..controls +(80:4mm) and +(100:4mm)..(e6.90);
+        \draw[shorten <=2pt](e5.180)..controls +(150:3mm) and +(120:1mm)..(e4.90);
+    }
+    %
+    \draw[->, thick] (  30:\radius) arc (  30:  -35:\radius);
+    \draw[->, thick] ( -90:\radius) arc ( -90: -155:\radius);
+    \draw[->, thick] (-205:\radius) arc (-205: -260:\radius);
+    %
+    % サイクルの外側の分子
+    \path (100:180pt) arc[start angle=90, end angle=-270, radius=160pt]
+    node[pos=0.733, inner sep=0pt] (A) {\chemfig{!A}};
+    \path (100:180pt) arc[start angle=90, end angle=-270, radius=160pt]
+    node[pos=0.325, inner sep=0pt] (G) {\chemfig{!G}};
+    \path (75:180pt) arc[start angle=90, end angle=-270, radius=160pt]
+    node[pos=0.805, inner sep=0pt] (F) {\chemfig{!F}};
+    \path (75:200pt) arc[start angle=90, end angle=-270, radius=160pt]
+    node[pos=0.570, inner sep=0pt] (E) {\chemfig{!E}};
+    % 接点
+    \draw (184:\rradius) node (P) {};
+    \draw (115:\radius) node (Q) {};
+    \draw (10:\radius) node (R) {};
+    \draw (-140:\radius) node (S) {};
+    % 合流の矢印
+    \draw[->, thick] (A.-12) -- node [pos=0.5, auto] {$+$\chemfig{NaOCl}} (P);
+    \draw[, thick] (F) to [out=-30, in=200] node [pos=0.8, auto] {$+$\chemfig{KBraq}} (Q);
+    \draw[->, thick] (R) to [out=-80, in=170] (G);
+    \draw[, thick] (E) to [out=90, in=-55] (S);
+    \end{tikzpicture}
+    \medbreak
+    \medbreak
+    \medbreak
+    % TEMPO酸化
+    \scriptsize\setchemfig{bond offset=1pt,atom sep=2.5em,compound sep=4em,arrow coeff=1.25} 
+    \schemestart
+        \chemfig{[:18]*5(---(-[,0.7]OH)--)}
+        \arrow(.east--.west){->[\ce{NaOCl}{,\ }\ce{KBr}][TEMPO{,\ }\ce{CHCl3}][-5pt]}[,4.0]
+        \chemfig{[:18]*5(---(=[,0.7]O)--)}
+    \schemestop\medbreak
+    \medbreak
+    \medbreak
+    % PCC酸化
+    \scriptsize\setchemfig{bond offset=1pt,atom sep=2.5em,compound sep=4em,arrow coeff=1.25} 
+    \schemestart
+        \chemfig{*6(-=-=\charge{270:2pt=$\scriptstyle\oplus$}{N}(-[,0.7]H)-=)}
+        \arrow(.350--.west){0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{Cr([:0]-Cl)([:90]=\charge{90:2pt=$\scriptstyle\ominus$}{O})([:180]=O)([:270]=O)}
+        \arrow(.east--.west)
+        \chemfig{*6(-=-\charge{225:2pt=$\scriptstyle\oplus$}{N}(-[,0.7]H-[:-30]O-[:-30]@{x2}Cr(-[:60]Cl)(=[@{x3}:-30]\charge{270:2pt=$\scriptstyle\oplus$}{O}-[@{x4}:30]H)(=[:-120]O))=-=)}
+        \arrow(.east--.west){0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{@{x1}HO-[:30]-[:-30]R}
+    \schemestop
+    \chemmove[line width=0.2pt]{
+        \draw[shorten <=2pt](x1.30)..controls +(90:10mm) and +(60:10mm)..(x2.45);
+        \draw[shorten <=2pt](x3.90)..controls +(-90:10mm) and +(-90:10mm)..(x4.0);
+    }
+    \medbreak
+    \medbreak
+    \medbreak
+    \schemestart
+        \arrow(.east--.west)
+        \chemfig{Cr(-[@{y3}:30]@{y4}Cl)(-[@{y2}:90]@{y1}O-[:30]H)(=[:180]O)(-[:270]O-[:-150]H)(-[:-30]O-[:30](-[:-30]R))}
+        \arrow(.east--.west)
+        \chemfig{@{y8}Cr(=[@{y5}:90]\charge{90:2pt=$\scriptstyle\ominus$}{O}-[@{y6}:30]H)(=[:180]O)(-[:270]O-[:-150]H)(-[@{y7}:0]O-[@{y10}:30](-[:-30]R)(-[@{y9}:90]@{y12}H))}
+        \arrow(.east--.west){0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{*6(-=-=@{y11}N-=)}
+        \arrow(.east--.west)
+        \chemfig{O=[:30]-[:-30]R}
+        \arrow(.east--.west){0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{HO-[:30]Cr(=[:90]O)(-[:-30]OH)}
+    \schemestop
+    \chemmove[line width=0.2pt]{
+        \draw[shorten <=2pt](y1.120)..controls +(170:10mm) and +(170:10mm)..(y2.180);
+        \draw[shorten <=2pt](y3.90)..controls +(-90:3mm) and +(-90:3mm)..(y4.0);
+        \draw[shorten <=2pt](y5.90)..controls +(150:8mm) and +(120:8mm)..(y6.0);
+        \draw[shorten <=2pt](y7.90)..controls +(60:5mm) and +(80:5mm)..(y8.0);
+        \draw[shorten <=2pt](y9.90)..controls +(120:5mm) and +(120:5mm)..(y10.0);
+        \draw[shorten <=2pt](y11.90)..controls +(90:8mm) and +(90:8mm)..(y12.90);
+    }
+    \medbreak
+    \medbreak
+    \medbreak
+    % Swern酸化
+    \scriptsize\setchemfig{bond offset=1pt,atom sep=2.5em,compound sep=4em,arrow coeff=1.25} 
+    \schemestart
+        \chemfig{Cl-[:30](=[:90]O)-[:-30]@{x2}(=[:-90]O)-[@{x3}:30]@{x4}Cl}
+        \arrow(.350--.west){0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{Me-[:30]\charge{270:2pt=$\scriptstyle\oplus$}{S}(-[:90]@{x1}\charge{45:2pt=$\scriptstyle\ominus$}{O})-[:-30]Me}
+        \arrow(.east--.west)
+        \chemfig{@{x5}\charge{45:2pt=$\scriptstyle\ominus$}{Cl}}
+        \arrow(.east--.west){0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{@{x8}O(-[:30](=[:90]O)-[:-30](=[:-90]O)-[:30]Cl)(-[@{x7}:150]@{x6}\charge{270:2pt=$\scriptstyle\oplus$}{S}(-[:90]Me)-[:-150]Me)}
+        \arrow(.east--.west)
+        \chemfig{R-[:30]-[:-30]@{x9}OH}
+        \arrow(.east--.west){0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{Me-[:30]@{x10}\charge{270:2pt=$\scriptstyle\oplus$}{S}(-[@{x11}:90]@{x12}Cl)-[:-30]Me}
+    \schemestop
+    \chemmove[line width=0.2pt]{
+        \draw[shorten <=2pt](x1)..controls +(90:13mm) and +(90:13mm)..(x2.90);
+        \draw[shorten <=2pt](x3.-30)..controls +(-30:5mm) and +(-30:5mm)..(x4.0);
+        \draw[shorten <=2pt](x5)..controls +(60:8mm) and +(100:8mm)..(x6.90);
+        \draw[shorten <=2pt](x7.-30)..controls +(-90:5mm) and +(-90:5mm)..(x8.-150);
+        \draw[shorten <=2pt](x9)..controls +(60:8mm) and +(100:8mm)..(x10.90);
+        \draw[shorten <=2pt](x11.0)..controls +(-30:5mm) and +(-30:5mm)..(x12.0);
+    }
+    \medbreak
+    \medbreak
+    \medbreak
+    \schemestart
+        \arrow(.east--.west)
+        \chemfig{R-[:30]-[:-30]O-[:30]\charge{270:2pt=$\scriptstyle\oplus$}{S}(-[:-30]@{y4}CH_2-[@{y3}:30]@{y2}H)-[:90]Me}
+        \arrow(.east--.west){0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{@{y1}\charge{180=\:}{N}Et_3}
+        \arrow(.east--.west)
+        \chemfig{R-[:30](-[@{y7}:70]@{y6}H)(-[:110]H)-[@{y8}:-30]O-[@{y9}:30]\charge{270:2pt=$\scriptstyle\oplus$}{S}(-[@{y10}:90]@{y5}\charge{90:2pt=$\scriptstyle\ominus$}{C}H_2)-[:-30]Me}
+        \arrow(.east--.west)
+        \chemfig{R-[:30](=[:90]O)-[:-30]H}
+    \schemestop
+    \medbreak
+    \medbreak
+    \medbreak
+    \chemmove[line width=0.2pt]{
+        \draw[shorten <=2pt](y1)..controls +(90:13mm) and +(90:13mm)..(y2.90);
+        \draw[shorten <=2pt](y3.-30)..controls +(-30:5mm) and +(-60:5mm)..(y4.0);
+        \draw[shorten <=2pt](y5)..controls +(90:8mm) and +(90:8mm)..(y6.90);
+        \draw[shorten <=2pt](y7.-30)..controls +(0:5mm) and +(60:5mm)..(y8.-150);
+        \draw[shorten <=2pt](y9)..controls +(90:8mm) and +(-150:8mm)..(y10.90);
+    }
+    \medbreak
+    \medbreak
+    \medbreak
+    % Dess-Martin酸化
+    \scriptsize\setchemfig{bond offset=1pt,atom sep=2.5em,compound sep=4em,arrow coeff=1.25} 
+    \schemestart
+        \chemfig{*6(-=(*5(-(=O)-O-@{x2}I(-OAc)(-[:30]OAc)(-[@{x3}:120]@{x4}AcO)-))-=-=)}
+        \arrow(.350--.west){0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{@{x1}HO-[:30]-[:-30]R}
+        \arrow(.east--.west)
+        \chemfig{*6(-=(*5(-(=O)-O-I(-[@{x9}:90]O-[@{x8}:30](-[:90]R)-[@{x7}:-30]@{x6}H)(-[@{x10}:0]OAc)(-[@{x11}:150]@{x12}AcO)-))-=-=)}
+        \arrow(.east--.west){0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{@{x5}\charge{45:2pt=$\scriptstyle\ominus$}{O}Ac}
+        \arrow(.east--.west)
+        \chemfig{*6(-=(*5(-(=O)-O-I(-OAc)-))-=-=)}
+        \arrow(.east--.west){0}[0,0.1]
+        \+
+        \arrow{0}[0,0.1]
+        \chemfig{R-[:30](=[:90]O)-[:-30]H}
+    \schemestop
+    \chemmove[line width=0.2pt]{
+        \draw[shorten <=2pt](x1.90)..controls +(90:6mm) and +(10:6mm)..(x2.east);
+        \draw[shorten <=2pt](x3.-30)..controls +(-150:5mm) and +(-150:5mm)..(x4.0);
+        \draw[shorten <=2pt](x5.90)..controls +(90:6mm) and +(10:6mm)..(x6.east);
+        \draw[shorten <=2pt](x7.-30)..controls +(-90:5mm) and +(-90:5mm)..(x8.0);
+        \draw[shorten <=2pt](x9.0)..controls +(60:6mm) and +(60:6mm)..(x10.60);
+        \draw[shorten <=2pt](x11.-30)..controls +(-150:5mm) and +(-150:5mm)..(x12.0);
+    }
+\end{document}
